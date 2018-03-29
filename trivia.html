@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>  
+    <meta charset="UTF-8">
+    <title>Trivia Game</title>
+</head>
+
+<body>
+
+    <h1>Trivia Game</h1>
+    <p> press 't' for true and 'f' for false</p>
+    <p id="score"></p>
+    <p id="question"></p>
+    
+<script>
+
+        // VARIABLES
+        // ==========================================================================
+
+        // The array of questions for our quiz game.
+        var questions = [
+            { q: "In the 1950s the Salton Sea was more popular than Yosemite Natl. Park", a: "t" },
+            { q: "The Salton Sea was man made", a: "t" },
+            { q: "The Salton Sea is a Wildlife Preserve", a: "t" },
+            { q: "The Salton Sea is a good place to fish", a: "f" },
+            { q: "The Salton Sea is a major vacation spot for wldlife lovers", a: "f" }
+        ];
+
+        // We start the game with a score of 0.
+        var score = 0;
+        // Variable to hold the index of current question.
+        var questionIndex = 0;
+
+        // FUNCTIONS
+        // ==============================================================================
+
+        // Function to render questions.
+        function renderQuestion() {
+            // If there are still more questions, render the next one.
+            if (questionIndex <= (questions.length - 1)) {
+                document.querySelector("#question").innerHTML = questions[questionIndex].q;
+            }
+            // If there aren't, render the end game screen.
+            else {
+                document.querySelector("#question").innerHTML = "Game Over!";
+                document.querySelector("#score").innerHTML = "Final Score: " + score + " out of " + questions.length;
+            }
+        }
+
+        // Function that updates the score...
+        function updateScore() {
+            document.querySelector("#score").innerHTML = "Score: " + score;
+        }
+
+
+        // MAIN PROCESS
+        // ==============================================================================
+
+        // Calling functions to start the game.
+        renderQuestion();
+        updateScore();
+
+        // When the user presses a key, it will run the following function...
+        document.onkeyup = function (event) {
+
+            // If there are no more questions, stop the function.
+            if (questionIndex === questions.length) {
+                return;
+                
+            }    
+                //close window,stop timer, total score
+            
+            //start timer when game begins,nstop timer when last question is answered
+            // or when the game is over
+            //start time out timer on click
+            // var secondsCounter = 0;
+
+            //  Start onkeyup
+         //   $("#start").on("click", function () {
+                // Set the button alert's timeout to run X seconds after the function's called.
+        //        keepAlerting = setInterval(function () {
+        //            console.log(secondsCounter++);
+
+
+   //         }, 10000);
+    //        });
+ //    (function ($) {
+ //               $('#retroclockbox1').flipcountdown({ showHour: false, showMinute: false, showSecond: true });
+   //         });console.log(  retroclockbox1 )
+            //  Cancel on click.
+           // $("#cancel").on("click", function () {
+                // Clear the button alert's timeout.
+           //     clearTimeout(delayButtonAlert);
+         //   });
+
+            //  Cancel window alert on click.
+       //     $("#window-cancel").on("click", function () {
+                //  Clear the timeout, and stop the window alert.
+       //         clearTimeout(windowTimeout);   
+
+            // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
+       //     var userInput = String.fromCharCode(event.which).toLowerCase();
+
+            // Only run this code if "t" or "f" were pressed.
+           if (userInput === "t" || userInput === "f") {
+
+                // If they guess the correct answer, increase and update score, alert them they got it right.
+          if (userInput === questions[questionIndex].a) {
+                    alert("Correct!");
+                   score++;
+                    updateScore();
+                }
+                // If wrong, alert them they are wrong.
+                else {
+                    alert("Wrong!");
+                }
+
+                // Increment the questionIndex variable and call the renderQuestion function.
+                questionIndex++;
+                renderQuestion();
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
